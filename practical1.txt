@@ -1,0 +1,101 @@
+/*
+                               NAME: 
+                               Registration no: 
+                               Section: 
+*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+typedef struct {
+    int process_id;
+    int arrival_time;
+    int burst_time;
+    int completion_time;
+    int response_time;
+} Process;
+
+void generate_processes(Process *processes, int num_processes) {
+    srand(time(NULL));
+    for (int i = 0; i < num_processes; i++) {
+        processes[i].process_id = i + 1;
+        processes[i].arrival_time = rand() % 100;
+        processes[i].burst_time = rand() % 20 + 1; 
+    }
+}
+
+void sjf_preemption(Process *processes, int num_processes, int total_time) {
+}
+
+int main() {
+    int num_processes = 10; 
+    int total_time = 150; 
+
+    Process processes[num_processes];
+    generate_processes(processes, num_processes);
+    sjf_preemption(processes, num_processes, total_time);
+
+    printf("Report: SJF with preemption vs. SJF with Non-preemptive\n");
+
+
+    return 0;
+}
+/*
+            Introduction : 
+                Title: Understanding the SJF Preemption Simulation Code
+                The provided C code aims to simulate a scheduling algorithm known as Shortest Job First (SJF) 
+                with preemption. This simulation program generates random processes with arrival times and 
+                CPU burst times, then simulates their execution under an SJF preemption policy for a predefined 
+                total time. At the end, it is expected to compare the results with SJF without preemption.
+            Code Structure:
+                1. Include Statements:
+                 - The code starts with necessary include statements, such as `stdio.h`, `stdlib.h`, and `time.h`, for 
+                standard input/output, dynamic memory allocation, and time functions.
+                2. Struct Definition:
+                 - The `Process` struct defines the attributes of a process, including its ID, arrival time, burst time, 
+                completion time, and response time.
+                3. `generate_processes` Function:
+                 - This function is responsible for generating random processes.
+                 - A for loop is used to generate a specified number of processes, each with a unique ID, a 
+                random arrival time, and a random burst time.
+                 - The randomization of arrival and burst times is done using `rand()` and modulo operations.
+                4. `sjf_preemption` Function:
+                 - This function is a placeholder for the SJF preemption algorithm, which is not yet implemented 
+                in the code.
+                 - It is intended to simulate the execution of processes based on SJF with preemption, and it will 
+                update the process attributes accordingly.
+                5. `main` Function:
+                 - The `main` function serves as the entry point of the program.
+                 - It initializes the number of processes and the total time for the simulation.
+                 - An array of `Process` structures is created to store process information.
+                 - The `generate_processes` function is called to populate the array with randomly generated 
+                processes.
+                 - The `sjf_preemption` function, which is currently a placeholder, is invoked.
+                6. Output:
+                 - The code includes a simple print statement at the end to provide a header for the report. 
+                However, it does not currently generate any detailed simulation results.
+            Extending the Code:
+                To complete the simulation and compare SJF with preemption and SJF without preemption, the 
+            following steps should be taken:
+                1. Implementing SJF with Preemption:
+                 - The `sjf_preemption` function needs to be implemented to simulate SJF with preemption. This 
+                involves scheduling processes based on their burst times and handling preemption when a 
+                shorter job arrives.
+                2. Calculating Metrics:
+                 - In the `sjf_preemption` function, metrics like completion time and response time should be 
+                calculated for each process and stored in the `Process` struct.
+                3. Comparing with SJF Non-preemptive:
+                 - After the simulation is complete, you can create another function to simulate SJF without 
+            preemption.
+                 - Calculate the same metrics for this scenario.
+                 - Finally, compare the results of the two scenarios to understand the impact of preemption on 
+                scheduling efficiency.
+                4. Generating the Report:
+                 - Write a comprehensive report based on the simulation results.
+                 - Compare and analyze the efficiency of SJF with preemption and SJF without preemption.
+                 - Discuss the advantages and disadvantages of each approach.
+                 - Provide insights and recommendations based on the comparison.
+                By following these steps, We can create a comprehensive simulation of SJF with preemption and a 
+                thorough report that meets the project's requirements
+*/
+
+
